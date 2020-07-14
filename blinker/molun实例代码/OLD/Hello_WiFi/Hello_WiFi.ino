@@ -10,9 +10,6 @@
 #define BLINKER_WIFI
 #define BLINKER_MIOT_OUTLET
 
-
-
-
 #include <Blinker.h>
 
 char auth[] = "cb5ff18ed1cf"; // Blinker APP中添加设备时生成的Secret Key
