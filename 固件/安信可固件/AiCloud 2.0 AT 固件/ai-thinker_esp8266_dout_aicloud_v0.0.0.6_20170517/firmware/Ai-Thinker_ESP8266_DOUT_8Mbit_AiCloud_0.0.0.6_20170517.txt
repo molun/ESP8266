@@ -1,0 +1,17 @@
+Check Time:  2017-05-17 17:42:54
+MD5:  7EF6C4D0400275FE1F561B6563EDBCA1
+
+Module Type: ESP8266
+
+*************** File Info ***************
+
+File Name: Ai-Thinker_ESP8266_DOUT_8Mbit_AiCloud_0.0.0.6_20170517.bin
+File Size: 1024 KB (8.00Mbits)
+
+*************** Flash Info ***************
+
+SPI MODE: DOUT
+SPI SPEED: 40MHZ
+Flash Size: 8Mbits
+
+*****************************************

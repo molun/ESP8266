@@ -1,0 +1,50 @@
+Doit  Cloud兼容乐鑫原来AT指令，
+并新增了如下指令：
+
+
+1. AT+TRUNK
+   (1) 设置命令：
+           格式：AT+TRUNK=port,IP,SSID,PASS，其中port为端口（6510~7510），SSID为WIFI名，PASS是WIFI密码
+           例子：AT+TRUNK=7000,"115.28.78.23","doit_newifi","doit3305"
+   (2) 执行命令：
+           格式：AT+TRUNK
+           例子：AT+TRUNK
+   (3) 测试命令：
+           格式：AT+TRUNK=?
+           例子：AT+TRUNK=?
+
+2. AT+STOPTRUNK
+   (1) 执行命令：
+           格式：AT+STOPTRUNK
+           例子：AT+STOPTRUNK
+
+3. AT+SENDDATA
+   (1) 设置命令：
+           格式：AT+SENDDATA=len,data，其中len为发送内容长度，data为发送内容
+           例子：AT+SENDDATA=5,"hello"
+   (2) 执行命令：
+           格式：AT+SENDDATA
+           例子：AT+SENDDATA
+        用TCP 调试工具，将模式设置为Client，ip设置为，115.28.78.23，端口设置为 步骤1中设置的port,两者之间就即可透传。
+4. AT+SENDHTTP
+   (1) 设置命令：
+       格式：AT+SENDHTTP=header_value_num,type,args,path,host,body[,header1,value1,header2,value2]
+        header_value_num：表示自定义头字段个数，最多支持自定义2个
+        type：请求类型，GET/POST
+        args：请求参数，如“first=11&second=22”
+        path：路径，如果是wx.doit.am/t.php，则path为/t.php
+        host：如wx.doit.am/t.php，则host为wx.doit.am
+        body：可为空值“”，暂不使用
+      
+
+   (2) 执行命令：
+       格式：AT+SENDHTTP
+       例子：AT+SENDHTTP
+
+   SENDHTTP使用例子
+       步骤1）：AT+TRUNK=80,"wx.doit.am","doit_newifi","doit3305"
+       步骤2）：AT+TRUNK
+       步骤3）：AT+SENDHTTP=1,"GET","first=a&second=b","/t.php","wx.doit.am","body_content","header1","value1"
+         AT+SENDHTTP=1,"POST","first=a&second=b","/t.php","wx.doit.am","","header1","value1"
+       步骤4）：AT+SENDHTTP        //发送http请求
+       步骤5）：AT+STOPTRUNK        //断开连接

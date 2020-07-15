@@ -1,0 +1,3 @@
+```shell
+esptool.py -p /dev/<your_ESPPort> --baud 115200 write_flash -fs 1MB -fm dout -ff 40m 0x0 rboot.bin 0x1000 blank_config.bin 0x2000 haamain.bin
+```

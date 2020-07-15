@@ -1,0 +1,17 @@
+Check Time:  2017-08-04 20:41:18
+MD5:  27F0B4F33F4951BF0EEF5505361B72B6
+
+Module Type: ESP8266
+
+*************** File Info ***************
+
+File Name: AiThinker_ESP8266_DOUT_32M-C1_0.0.0.7s_20170804.bin
+File Size: 4096 KB (32.00Mbits)
+
+*************** Flash Info ***************
+
+SPI MODE: DOUT
+SPI SPEED: 40MHZ
+Flash Size: 32Mbits-C1
+
+*****************************************
