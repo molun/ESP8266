@@ -117,7 +117,7 @@ void button1_callback(const String & state)
     BlinkerAliGenie.powerState(oState ? "on" : "off");
     BlinkerAliGenie.print();
 
-//    digitalWrite(LED_BUILTIN, oState);
+    digitalWrite(LED_BUILTIN, oState);
     digitalWrite(GPIO, oState);
 }
 
@@ -185,7 +185,7 @@ void duerPowerState(const String & state)
     BLINKER_LOG("need set power state: ", state);
 
     if (state == BLINKER_CMD_ON) {
-//        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(LED_BUILTIN, HIGH);
         digitalWrite(GPIO, LOW);
 
         BlinkerDuerOS.powerState("on");
@@ -194,7 +194,7 @@ void duerPowerState(const String & state)
         oState = true;
     }
     else if (state == BLINKER_CMD_OFF) {
-//        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(LED_BUILTIN, LOW);
         digitalWrite(GPIO, LOW);
 
         BlinkerDuerOS.powerState("off");
@@ -236,7 +236,7 @@ void aligeniePowerState(const String & state)
     BLINKER_LOG("need set power state: ", state);
 
     if (state == BLINKER_CMD_ON) {
-//        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(LED_BUILTIN, HIGH);
         digitalWrite(GPIO, LOW);
 
         BlinkerAliGenie.powerState("on");
@@ -245,7 +245,7 @@ void aligeniePowerState(const String & state)
         oState = true;
     }
     else if (state == BLINKER_CMD_OFF) {
-//        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(LED_BUILTIN, LOW);
         digitalWrite(GPIO, HIGH);
 
         BlinkerAliGenie.powerState("off");

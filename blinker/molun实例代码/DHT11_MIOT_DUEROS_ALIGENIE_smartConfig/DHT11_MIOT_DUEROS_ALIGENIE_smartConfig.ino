@@ -104,6 +104,12 @@ void heartbeat()
     TEMP.print(temp_read);
 }
 
+void dataStorage()
+{
+    Blinker.dataStorage("temp", temp_read);
+    Blinker.dataStorage("humi", humi_read);
+}
+
 void miotQuery(int32_t queryCode)
 {
     BLINKER_LOG("MIOT Query codes: ", queryCode);
@@ -122,12 +128,6 @@ void miotQuery(int32_t queryCode)
             BlinkerMIOT.print();
             break;
     }
-}
-
-void dataStorage()
-{
-    Blinker.dataStorage("temp", temp_read);
-    Blinker.dataStorage("humi", humi_read);
 }
 
 void duerQuery(int32_t queryCode)
@@ -204,7 +204,8 @@ void setup()
     Blinker.attachDataStorage(dataStorage);
     BlinkerMIOT.attachQuery(miotQuery);
     BlinkerDuerOS.attachQuery(duerQuery);
-    BlinkerAliGenie.attachQuery(aligenieQuery);   
+    BlinkerAliGenie.attachQuery(aligenieQuery);
+    Blinker.setTimezone(8.0);   
     dht.begin();
 }
 
@@ -230,7 +231,7 @@ void loop()
         temp_read = t;
 
         BLINKER_LOG("Humidity: ", h, " %");
-        BLINKER_LOG("Temperature: ", t, " *C");
-        BLINKER_LOG("Heat index: ", hic, " *C");
+        BLINKER_LOG("Temperature: ", t, " °C");
+        BLINKER_LOG("Heat index: ", hic, " °C");
     }
 }
