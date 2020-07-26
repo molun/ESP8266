@@ -19,14 +19,10 @@
 #include <DHT.h>
 #include <ESP8266WiFi.h>    //WIFI库，配网必需
 
-//int counter = 0;
-
 int count = 0;     //时间计数
 bool WIFI_Status = true;   //WIFI状态标志位
 
 char auth[] = "6825c3f2a773"; // Blinker APP中添加设备时生成的Secret Key
-//char ssid[] = "tymishop"; // WIFI名称
-//char pswd[] = "15581822425"; // WIFI密码
 
 /* 微信智能配网 */
 void smartConfig()
