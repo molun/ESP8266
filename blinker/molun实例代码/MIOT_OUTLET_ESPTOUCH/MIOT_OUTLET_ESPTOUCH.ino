@@ -87,6 +87,7 @@ void miotPowerState(const String & state)
 
     if (state == BLINKER_CMD_ON) {
         digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, LOW);
 
         BlinkerMIOT.powerState("on");
         BlinkerMIOT.print();
@@ -95,6 +96,7 @@ void miotPowerState(const String & state)
     }
     else if (state == BLINKER_CMD_OFF) {
         digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, HIGH);
 
         BlinkerMIOT.powerState("off");
         BlinkerMIOT.print();

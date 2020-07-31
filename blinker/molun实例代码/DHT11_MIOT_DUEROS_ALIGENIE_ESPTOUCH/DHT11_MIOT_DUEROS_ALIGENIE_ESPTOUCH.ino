@@ -2,7 +2,7 @@
  *
  *  名称：DHT11温湿度计
  *  简介：DHT11温湿度传感器DATA引脚接入NodeMCU D4(GPIO2)引脚,接入小爱同学、
- *       小度音箱、天猫精灵，增加历史数据存储与图表查看数据的功能
+ *       小度音箱、天猫精灵，增加历史数据存储与图表查看数据的功能，ESPTOUCH配网
  *  作者：MOLUN
  *  抖音：tymishop
  *  博客：https://molun.cf/
@@ -13,71 +13,12 @@
 #define BLINKER_MIOT_SENSOR
 #define BLINKER_DUEROS_SENSOR
 #define BLINKER_ALIGENIE_SENSOR
-#define BLINKER_PRINT Serial
+#define BLINKER_ESP_SMARTCONFIG
 
 #include <Blinker.h>
 #include <DHT.h>
-#include <ESP8266WiFi.h>    //WIFI库，配网必需
-
-int count = 0;     //时间计数
-bool WIFI_Status = true;   //WIFI状态标志位
 
 char auth[] = "6825c3f2a773"; // Blinker APP中添加设备时生成的Secret Key
-
-/* 微信智能配网 */
-void smartConfig()
-{
-  WiFi.mode(WIFI_STA);//设置STA模式
-  Serial.println("\r\nWait for Smartconfig...");//打印log信息
-  WiFi.beginSmartConfig();//开始SmartConfig，等待手机端发出用户名和密码
-  while(1)
-  {
-    Serial.println(".");
-    digitalWrite(LED_BUILTIN,HIGH);//指示灯闪烁
-    delay(1000);
-    digitalWrite(LED_BUILTIN,LOW);//指示灯闪烁
-    delay(1000);
-    if(WiFi.smartConfigDone())//配网成功，接收到SSID和密码
-    {
-      Serial.println("SmartConfig Success");
-      Serial.printf("SSID:%s\r\n", WiFi.SSID().c_str());
-      Serial.printf("PSW:%s\r\n", WiFi.psk().c_str());
-      break;      
-    }
-  }  
-}
-
-/*连接网络*/
-void blinkerConnect()
-{
-  Serial.println("\r\n正在连接WIFI...");
-
-    while(WiFi.status()!=WL_CONNECTED)//判断是否连接WIFI成功
-    {
-      if(WIFI_Status)
-      {
-          Serial.print(".");
-          digitalWrite(LED_BUILTIN, HIGH);  
-          delay(500);                       
-          digitalWrite(LED_BUILTIN, LOW);    
-          delay(500);                 
-          count++;
-          if(count>=5)//5s
-          {
-              WIFI_Status = false;
-              Serial.println("WiFi连接失败，请用手机进行配网"); 
-          }        
-        }
-        else
-        {
-          smartConfig();  //微信智能配网
-        }
-    }
-
-    Serial.println("连接成功");  
-    Serial.print("IP:");
-    Serial.println(WiFi.localIP());
-}
 
 BlinkerNumber HUMI("humi");
 BlinkerNumber TEMP("temp");
@@ -100,12 +41,6 @@ void heartbeat()
     TEMP.print(temp_read);
 }
 
-void dataStorage()
-{
-    Blinker.dataStorage("temp", temp_read);
-    Blinker.dataStorage("humi", humi_read);
-}
-
 void miotQuery(int32_t queryCode)
 {
     BLINKER_LOG("MIOT Query codes: ", queryCode);
@@ -124,6 +59,12 @@ void miotQuery(int32_t queryCode)
             BlinkerMIOT.print();
             break;
     }
+}
+
+void dataStorage()
+{
+    Blinker.dataStorage("temp", temp_read);
+    Blinker.dataStorage("humi", humi_read);
 }
 
 void duerQuery(int32_t queryCode)
@@ -189,18 +130,13 @@ void setup()
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, LOW);
 
-    //网络连接
-    blinkerConnect();
-  
-    // 初始化blinker
-    Blinker.begin(auth,WiFi.SSID().c_str(),WiFi.psk().c_str()); //根据配网得到的WIFI信息和设备秘钥，连接到Blinker云   
+    Blinker.begin(auth);
     Blinker.attachData(dataRead);
     Blinker.attachHeartbeat(heartbeat);
     Blinker.attachDataStorage(dataStorage);
     BlinkerMIOT.attachQuery(miotQuery);
     BlinkerDuerOS.attachQuery(duerQuery);
-    BlinkerAliGenie.attachQuery(aligenieQuery);
-    Blinker.setTimezone(8.0);   
+    BlinkerAliGenie.attachQuery(aligenieQuery);   
     dht.begin();
 }
 
@@ -226,7 +162,7 @@ void loop()
         temp_read = t;
 
         BLINKER_LOG("Humidity: ", h, " %");
-        BLINKER_LOG("Temperature: ", t, " °C");
-        BLINKER_LOG("Heat index: ", hic, " °C");
+        BLINKER_LOG("Temperature: ", t, " ℃");
+        BLINKER_LOG("Heat index: ", hic, " ℃");
     }
 }
