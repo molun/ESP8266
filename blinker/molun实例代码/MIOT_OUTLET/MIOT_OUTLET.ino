@@ -15,11 +15,11 @@
 
 #include <Blinker.h>
 
-char auth[] = "4c554444e986"; // Blinker APP中添加设备时生成的Secret Key
+char auth[] = "64ebf3fa9e74"; // Blinker APP中添加设备时生成的Secret Key
 char ssid[] = "tymishop"; // WIFI名称
 char pswd[] = "15581822425"; // WIFI密码
 
-const int GPIO = D1; // 定义继电器输入引脚为GPIO5
+const int GPIO = 0; // 定义继电器输入引脚为GPIO0
 
 bool oState = false;
 

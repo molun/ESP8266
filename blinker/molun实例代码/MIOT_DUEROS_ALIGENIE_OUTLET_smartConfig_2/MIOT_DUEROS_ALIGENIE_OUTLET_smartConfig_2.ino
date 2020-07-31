@@ -121,11 +121,11 @@ void button1_callback(const String & state)
     digitalWrite(GPIO, oState);
 }
 
-void heartbeat()
-{
-    if (oState) Button1.print("on");
-    else Button1.print("off");
-}
+//void heartbeat()
+//{
+//    if (oState = true) Button1.print("on");
+//    else Button1.print("off");
+//}
 
 // 小爱电源类的操作接口
 // 用户自定义电源类操作的回调函数
@@ -314,7 +314,7 @@ void setup()
     Blinker.attachData(dataRead);
 
     Button1.attach(button1_callback);
-    Blinker.attachHeartbeat(heartbeat);
+//    Blinker.attachHeartbeat(heartbeat);
     BlinkerMIOT.attachPowerState(miotPowerState); // 注册小爱电源类操作回调函数
     BlinkerMIOT.attachQuery(miotQuery); // 注册小爱设备查询的回调函数
     BlinkerDuerOS.attachPowerState(duerPowerState); // 注册小度电源类操作回调函数

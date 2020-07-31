@@ -21,7 +21,7 @@ char auth[] = "4c554444e986"; // Blinker APP中添加设备时生成的Secret Ke
 char ssid[] = "tymishop"; // WIFI名称
 char pswd[] = "15581822425"; // WIFI密码
 
-const int GPIO = D1; // 定义继电器输入引脚为GPIO5
+const int GPIO = 0; // 定义继电器输入引脚为GPIO0
 
 #define BUTTON_1 "btn-abc"
 // 新建组件对象
