@@ -14,7 +14,7 @@
 
 #include <Blinker.h>
 
-char auth[] = "ce4356d8a73d";
+char auth[] = "dd84e83d50b7";
 
 const int PIN_LED_RED = 13;
 const int PIN_LED_GREEN = 14;
