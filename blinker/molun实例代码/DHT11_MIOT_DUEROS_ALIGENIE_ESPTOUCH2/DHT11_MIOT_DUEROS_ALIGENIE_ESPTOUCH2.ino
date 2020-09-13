@@ -18,7 +18,7 @@
 #include <Blinker.h>
 #include <DHT.h>
 
-char auth[] = "e3f1db51f564"; // Blinker APP中添加设备时生成的Secret Key
+char auth[] = "b92b165e2ae4"; // Blinker APP中添加设备时生成的Secret Key
 
 BlinkerNumber HUMI("humi");
 BlinkerNumber TEMP("temp");
