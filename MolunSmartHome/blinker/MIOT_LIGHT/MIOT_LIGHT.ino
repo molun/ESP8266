@@ -57,7 +57,7 @@ char pswd[] = "15581822425";
 #include <Adafruit_NeoPixel.h>
 
 #define PIN            D4
-#define NUMPIXELS      15
+#define NUMPIXELS      60
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 #define RGB_1 "RGBKey"
