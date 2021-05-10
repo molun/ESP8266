@@ -1,9 +1,14 @@
-https://github.com/arendst/Tasmota
+https://github.com/arendst/Tasmota/releases/
 
-http://thehackbox.org/tasmota/release/
+http://ota.tasmota.com/tasmota/release/
+
+http://ota.tasmota.com/tasmota/
+
+http://ota.tasmota.com/tasmota32/release/
+
+http://ota.tasmota.com/tasmota32/
+
+https://tasmota.github.io/docs/
 
 https://github.com/RavenSystem/esp-homekit-devices/wiki/Installation
 
-
-稳定版本：v8.3.1
-更新时间：20200518
