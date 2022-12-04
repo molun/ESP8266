@@ -20,8 +20,8 @@
 
 const char ssid[] = "tymishop";                          // Your network SSID name here
 const char pass[] = "15581822425";                          // Your network password here
-unsigned long timeZone = 8.0;                     // Change this value to your local timezone (in my case +1 for Amsterdam)
-const char* NTPServerName = "cn.pool.ntp.org";    // Change this to a ntpserver nearby, check this site for a list of servers: https://www.pool.ntp.org/en/
+unsigned long timeZone = 7.0;                     // Change this value to your local timezone (in my case +1 for Amsterdam)
+const char* NTPServerName = "cn.ntp.org.cn";    // Change this to a ntpserver nearby, check this site for a list of servers: https://www.pool.ntp.org/en/  time.pool.aliyun.com  cn.pool.ntp.org ntp.ntsc.ac.cn  ntp.aliyun.com
 unsigned long intervalNTP = 24 * 60 * 60000;      // Request a new NTP time every 24 hours
 
 // Change the colors here if you want.
@@ -60,7 +60,7 @@ unsigned long prevActualTime = 0;
 static const uint8_t monthDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 #define NUM_LEDS 60     
-#define DATA_PIN 13
+#define DATA_PIN 13  //GPIO13 D7
 CRGB LEDs[NUM_LEDS];
 
 struct DateTime {
