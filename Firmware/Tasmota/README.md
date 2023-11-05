@@ -12,3 +12,4 @@ https://tasmota.github.io/docs/
 
 https://github.com/RavenSystem/esp-homekit-devices/wiki/Installation
 
+https://tasmota.github.io/install/
